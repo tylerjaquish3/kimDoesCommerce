@@ -266,7 +266,7 @@ a:focus, a:hover {
 }
 
 .section {
-  padding: 100px 0;
+  padding: 50px 0;
 }
 
 @media (max-width: 480px) {
@@ -2088,4 +2088,9 @@ blockquote {
   margin: 0;
 }
 
-/*# sourceMappingURL=maps/style.css.map */
+.advantage-card {
+    text-align: center;
+    background: white;
+    height: 285px;
+    padding: 50px;
+}
