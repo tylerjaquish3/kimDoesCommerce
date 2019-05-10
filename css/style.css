@@ -23,12 +23,12 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-weight: 400;
-  font-family: "Quattrocento Sans", sans-serif;
+  font-family: "Anaheim", sans-serif;
   color: #afbac4;
 }
 
 p {
-  font-family: "Quattrocento Sans", sans-serif;
+  font-family: "Anaheim", sans-serif;
 }
 
 /*=================================================================
@@ -464,7 +464,7 @@ a:focus, a:hover {
 .header-bradcrumb a, .header-bradcrumb .active {
   color: #cfcfcf;
   font-weight: 200;
-  font-family: "Quattrocento Sans", sans-serif;
+  font-family: "Anaheim", sans-serif;
 }
 
 .header-bradcrumb a:hover {
@@ -538,7 +538,7 @@ a:focus, a:hover {
 
 .navigation .logo img {
   height: auto;
-  width: 140px;
+  width: 50px;
 }
 
 .navigation .navigation-menu li.active a {
@@ -1193,6 +1193,7 @@ a:focus, a:hover {
 
 .member-photo img {
   transition: all 0.4s ease 0s;
+  width: 100%;
 }
 
 @media (max-width: 768px) {
@@ -1216,27 +1217,16 @@ a:focus, a:hover {
           transform: rotateY(180deg) scale(0.5, 0.5);
 }
 
-.member-photo .mask ul {
+.member-photo .mask p {
   text-align: center;
   position: relative;
   top: 125px;
-}
-
-.member-photo .mask ul li a {
   border: 1px solid #fff;
   color: #fff;
   display: block;
-  font-size: 20px;
-  height: 35px;
+  font-size: 14px;
   line-height: 35px;
   text-align: center;
-  width: 35px;
-}
-
-.member-photo .mask ul li a:hover {
-  background-color: #fff;
-  color: #57cbcc;
-  border: 1px solid transparent;
 }
 
 .member-meta {
@@ -1648,6 +1638,7 @@ a:focus, a:hover {
 
 .copyright img {
   margin-bottom: 15px;
+  width: 70px;
 }
 
 .copyright p {
@@ -2088,9 +2079,16 @@ blockquote {
   margin: 0;
 }
 
-.advantage-card {
+.adv-title {
+    position: absolute;
     text-align: center;
-    background: white;
-    height: 285px;
-    padding: 50px;
+    width: 100%;
+    margin-top: 45%;
+    font-size: 30px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.call-to-action h4 {
+    color: #444;
 }
