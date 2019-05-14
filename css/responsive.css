@@ -1,0 +1,22 @@
+
+@media only screen and (max-width: 480px) {
+	.hero-area img {
+	    max-width: 100px;
+	}
+
+	.hero-area .block h1 {
+	    font-size: 30px;
+	}
+
+	.portfolio-items-wrapper .mix {
+	    padding: 10px 20px;
+	}
+}
+
+@media only screen and (max-width: 768px) {
+
+}
+
+@media only screen and (max-width: 992px) {
+
+}

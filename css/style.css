@@ -531,7 +531,7 @@ a:focus, a:hover {
 
 .navigation .logo img {
   height: auto;
-  width: 50px;
+  width: 55px;
 }
 
 .navigation .navigation-menu li.active a {
@@ -601,33 +601,12 @@ a:focus, a:hover {
   z-index: 99;
 }
 
-.hero-area .block .video-button {
-  background: #fff;
-  color: #57cbcc;
-  display: inline-block;
-  height: 60px;
-  width: 60px;
-  border-radius: 50px;
-}
-
-.hero-area .block .video-button i {
-  line-height: 60px;
-  font-size: 20px;
-  margin-left: 3px;
-}
-
 .hero-area .block h1 {
   font-size: 90px;
   color: #fff;
   text-transform: capitalize;
   font-weight: 700;
   margin-bottom: 20px;
-}
-
-@media (max-width: 480px) {
-  .hero-area .block h1 {
-    font-size: 60px;
-  }
 }
 
 .hero-area .block p {
@@ -647,41 +626,8 @@ a:focus, a:hover {
   letter-spacing: 1px;
 }
 
-.hero-area-video {
-  height: 100vh;
-  position: inherit !important;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.hero-area-video .block {
-  color: #fff;
-  text-align: center;
-}
-
-.hero-area-video .block h1 {
-  font-size: 60px;
-  font-weight: 700;
-  margin-bottom: 20px;
-}
-
-.hero-area-video .block p {
-  color: #fff;
-  text-transform: uppercase;
-  font-size: 12px;
-  letter-spacing: 3px;
-  margin-bottom: 20px;
-}
-
-.hero-area-video .block .btn-main {
-  margin-top: 20px;
+.hero-area img {
+  max-width: 175px;
 }
 
 .dark-bg {
@@ -695,6 +641,10 @@ a:focus, a:hover {
 /*=================================================================
   About us section
 ==================================================================*/
+section#about {
+    margin-top: -21px;
+}
+
 .about .block {
   background: #242930;
   padding: 30px;
@@ -765,6 +715,15 @@ a:focus, a:hover {
   padding: 40px;
 }
 
+.content-block {
+  margin-top: 40px;
+  color: #fff;
+}
+
+.content-block h2, h4 {
+  color: #fff;
+}
+
 .about-2 .content-block .media {
   margin-top: 25px;
 }
@@ -773,14 +732,18 @@ a:focus, a:hover {
   padding-right: 15px;
 }
 
-.about-2 .content-block .media i {
-  font-size: 30px;
-  color: #57cbcc;
+.media .fa {
+    font-size: 26px;
+    color: #57cbcc;
 }
 
 .about-2 .content-block .media h4 {
   font-size: 16px;
   font-weight: 600;
+}
+
+i.fa.fa-bolt {
+  padding: 0px 6px;
 }
 
 /*=================================================================
@@ -2080,6 +2043,15 @@ blockquote {
     font-size: 30px;
     font-weight: bold;
     color: #fff;
+}
+
+.adv-title .fa {
+  font-size: 18px;
+  width: 30px;
+  height: 30px;
+  border-radius: 20px;
+  padding: 5px;
+  border: 1px solid #fff;
 }
 
 .call-to-action h4 {
