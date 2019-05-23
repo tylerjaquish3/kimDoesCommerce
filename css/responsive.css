@@ -11,9 +11,25 @@
 	.portfolio-items-wrapper .mix {
 	    padding: 10px 20px;
 	}
+
+	#our-team {
+		margin-top: -60px;
+	}
 }
 
 @media only screen and (max-width: 768px) {
+	
+	.hero-area img {
+	    max-width: 150px;
+	}
+
+	.hero-area .block h1 {
+	    font-size: 36px;
+	}
+
+	.portfolio-items-wrapper .mix {
+		padding: 20px 40px;
+	}
 
 }
 

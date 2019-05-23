@@ -1165,6 +1165,7 @@ i.fa.fa-bolt {
   text-align: center;
   height: 100%;
   width: 100%;
+  padding: 10px;
   left: 0;
   top: 0;
   opacity: 0;
@@ -1177,13 +1178,14 @@ i.fa.fa-bolt {
 .member-photo .mask p {
   text-align: center;
   position: relative;
-  top: 125px;
+  top: 20%;
   border: 1px solid #fff;
   color: #fff;
   display: block;
   font-size: 14px;
-  line-height: 35px;
+  line-height: 25px;
   text-align: center;
+  padding: 5px;
 }
 
 .member-meta {
