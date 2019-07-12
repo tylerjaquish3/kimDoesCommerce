@@ -11,29 +11,32 @@
     
     // $to = 'tylerjaquish@gmail.com';
 
-    $to = 'info@kimdoescommerce.com';
+    if (isset($_POST) && $message != '') {
 
-    $headers  = "From: " . $name . ' <' . $email . '>' . "\r\n";
-    $headers .= "Reply-To: ". $email . "\r\n";
-    $headers .= "MIME-Version: 1.0\r\n";
-    $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
+        $to = 'info@kimdoescommerce.com';
 
-    $templateTags =  array(
-        '{{subject}}' => $subject,
-        '{{email}}'=>$email,
-        '{{message}}'=>$message,
-        '{{name}}'=>$name
-    );
+        $headers  = "From: " . $name . ' <' . $email . '>' . "\r\n";
+        $headers .= "Reply-To: ". $email . "\r\n";
+        $headers .= "MIME-Version: 1.0\r\n";
+        $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
 
-    $templateContents = file_get_contents( dirname(__FILE__) . '/'.$email_template);
-    $contents =  strtr($templateContents, $templateTags);
+        $templateTags =  array(
+            '{{subject}}' => $subject,
+            '{{email}}'=>$email,
+            '{{message}}'=>$message,
+            '{{name}}'=>$name
+        );
 
-    if (mail( $to, $subject, $contents, $headers)) {
-        $result = array( 'type' => 'success', 'message'=>'<strong>Thank You!</strong>&nbsp; Your email has been delivered.' );
-    } else {
-        $result = array( 'type' => 'error', 'message'=>'<strong>Error!</strong>&nbsp; Cann\'t Send Mail.'  );
+        $templateContents = file_get_contents( dirname(__FILE__) . '/'.$email_template);
+        $contents =  strtr($templateContents, $templateTags);
+
+        if (mail( $to, $subject, $contents, $headers)) {
+            $result = array('type' => 'success', 'message'=>'<strong>Thank You!</strong>&nbsp; Your email has been delivered.');
+        } else {
+            $result = array('type' => 'error', 'message'=>'<strong>Error!</strong>&nbsp; Can\'t Send Mail.');
+        }
+
+        echo json_encode($result);
+        die;
     }
-
-    echo json_encode($result);
-    die;
 ?>
