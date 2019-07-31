@@ -6,27 +6,85 @@
         />
     </head>
     <body>
+        <div style="text-align: center" id="onclock"></div>
         <div id="container">
             <div id="justify">
                 <!-- Display the countdown timer in an element -->
                 <p id="demo"></p>
             </div>
+
             <p id="text"></p>
             <p id="pickText"></p>
 
             <div id="buttons">
-                <a class="btn" id="pickIsIn" onclick="pickIsIn();"
-                    >Pick Is In!</a
-                >
-                <a class="btn" id="reset" onclick="location.reload();">Reset</a>
-                <a class="btn" id="pauseResume" onClick="pauseCountdown();"
-                    >Pause</a
-                >
+                <a class="btn" id="pauseResume" onClick="pauseCountdown();">Pause</a>
+                <a class="btn" id="pickIsIn" onclick="pickIsIn();">Pick Is In!</a>
+                <a class="btn"  onClick="goBack();">Back</a>
+                <a class="btn" id="reset" onclick="location.reload();">Next</a>
+                
+                <!-- <a class="btn" onClick="hardReset();">Hard Reset</a> -->
             </div>
         </div>
+        
     </body>
 
     <script>
+
+        var pickOrder = ['Andy','Gavin','AJ','Matt','Tyler','Everett','Justin','Cole','Ben','Cameron'];
+
+        var completeArray = [];
+        var i;
+        for (i = 1; i < 23; i++) {
+            if (!isOdd(i)) {
+                reverse = pickOrder.slice().reverse();
+                reverse.forEach(function (item) {
+                    completeArray.push(item);
+                });
+                
+            } else {
+                pickOrder.forEach(function (item) {
+                    completeArray.push(item);
+                });
+            }
+        }
+
+
+        function hardReset() {
+            localStorage.removeItem('currentPick');
+            location.reload();
+        }
+  
+        goForward();
+
+        function isOdd(num) { return num % 2;}
+
+        function goForward()
+        {
+            prevPick = localStorage.getItem('currentPick');
+
+            // On initial load, nothing will be set in storage yet
+            if (prevPick == 'undefined' || prevPick == null) {
+                prevPick = -1;
+            }
+
+            newPick = parseInt(prevPick)+1;
+            localStorage.setItem('currentPick', newPick);
+        }
+
+        function goBack()
+        {
+            prevPick = localStorage.getItem('currentPick');
+
+            // On initial load, nothing will be set in storage yet
+            if (prevPick == 'undefined' || prevPick == null) {
+                prevPick = -1;
+            }
+
+            newPick = parseInt(prevPick)-2;
+            localStorage.setItem('currentPick', newPick);
+            location.reload();
+        }
+
         var distance = 120000;
         var minutes = '';
         var seconds = '';
@@ -37,7 +95,13 @@
 
         startCountdown(twoMinutes);
 
-        function startCountdown(countDownDate) {
+        function startCountdown(countDownDate) 
+        {
+            currentPick = localStorage.getItem('currentPick');
+            console.log(currentPick);
+            displayPick = parseInt(currentPick)+1;
+            document.getElementById('onclock').innerHTML = 'On the clock: '+completeArray[currentPick]+'<br/>Pick: '+displayPick;
+
             // Update the count down every 1 second
             x = setInterval(function() {
                 // Get today's date and time
@@ -75,10 +139,10 @@
         }
 
         function pickIsIn() {
+            // goForward();
             clearInterval(x);
             document.getElementById('demo').innerHTML = '';
-            document.getElementById('pickText').innerHTML =
-                'The Pick Is In!<img src="pick.jpg">';
+            document.getElementById('pickText').innerHTML = 'The Pick Is In!';
             document.getElementById('pickIsIn').style.display = 'none';
             document.getElementById('pauseResume').style.display = 'none';
         }
@@ -104,8 +168,8 @@
 
     <style>
         body {
-            background: #000;
-            color: #fff;
+            background: #04015D;
+            color: #2EFF37;
             font-family: 'Teko', sans-serif;
             text-align: center;
         }
@@ -118,6 +182,7 @@
             font-size: 500px;
             text-align: left;
             line-height: 500px;
+            margin-top: 0px;
         }
         @-webkit-keyframes spaceboots {
             0% {
@@ -163,6 +228,8 @@
             -webkit-transform-origin: 50% 50%;
             -webkit-animation-iteration-count: infinite;
             -webkit-animation-timing-function: linear;
+
+            margin-top: -440px;
         }
         #pickText {
             font-size: 350px;
@@ -172,14 +239,18 @@
             color: red;
         }
         #buttons {
-            margin-top: -400px;
+            margin-top: -320px;
             text-align: center;
         }
         .btn {
-            background-color: aqua;
+            background-color: #2EFF37;
             color: #000;
             cursor: pointer;
             padding: 30px;
+        }
+        #onclock {
+            color: #fff;
+            font-size: 50px;
         }
     </style>
 </html>
