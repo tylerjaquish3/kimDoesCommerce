@@ -466,6 +466,7 @@
 	</section> -->
 	
 	<!-- Start Blog Section =========================================== -->
+	6Le2KsAUAAAAAP5_7zUsRGo_Yjkb5scrD9Uabpn6
 	<!-- <section id="blog" class="section">
 		<div class="container">
 			<div class="row">
@@ -570,7 +571,7 @@
 				</div>
 
 				<div class="contact-form col-md-6 wow fadeInUp" data-wow-duration="500ms" data-wow-delay="300ms">
-					<form id="contact-form" method="post" action="sendmail.php" role="form">
+					<form id="contact-form" method="post" role="form">
 					
 						<div class="form-group">
 							<input type="text" placeholder="Your Name" class="form-control" name="name" id="name">
@@ -666,6 +667,32 @@
 	<script type="text/javascript" src="plugins/wow.min.js"></script>
 	<!-- Custom js -->
 	<script type="text/javascript" src="js/script.js"></script>
+
+	<script src="https://www.google.com/recaptcha/api.js?render=6Le2KsAUAAAAAE8Ls5mIq3fRoBWwdtI6ML36AOp_"></script>
+	<script>
+	grecaptcha.ready(function() {
+	    
+	       	$('input#contact-submit').click( function() {
+
+	       		var formData = '';
+	    		grecaptcha.execute('6Le2KsAUAAAAAE8Ls5mIq3fRoBWwdtI6ML36AOp_', {action: 'homepage'}).then(function(token) {
+	    			formData = $('form#contact-form').serialize()+'&token='+token;
+    			});
+   		
+			    $.ajax({
+			        url: 'sendmail.php',
+			        type: 'post',
+			        dataType: 'json',
+			        data: formData,
+			        success: function(data) {
+	                   // ... do something with the data...
+	                   console.log(data);
+	                 }
+			    });
+			});
+	  
+	});
+	</script>
 
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-140699539-1"></script>

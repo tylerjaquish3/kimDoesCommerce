@@ -9,11 +9,13 @@
 
     $email_template = 'emailTemplate.html';
     
-    // $to = 'tylerjaquish@gmail.com';
+    $to = 'tylerjaquish@gmail.com';
+
+    var_dump($_POST);die;
 
     if (isset($_POST) && $message != '') {
 
-        $to = 'info@kimdoescommerce.com';
+        // $to = 'info@kimdoescommerce.com';
 
         $headers  = "From: " . $name . ' <' . $email . '>' . "\r\n";
         $headers .= "Reply-To: ". $email . "\r\n";
