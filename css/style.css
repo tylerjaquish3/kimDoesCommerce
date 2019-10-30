@@ -2060,3 +2060,7 @@ blockquote {
 .call-to-action h4 {
     color: #444;
 }
+
+.grecaptcha-badge {
+  display: none;
+}
