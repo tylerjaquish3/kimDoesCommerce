@@ -1,0 +1,37 @@
+taiga, rain, mangrove = forest
+cocktail, sun, wedding = dress
+yellow dwarf, red giant, neutron = star
+car, florida, piano = key
+galleon, dinghy, sloop = boat
+panama, fez, bucket = hat
+blue, artificial, crab = grass
+scissor, back, corner = kick
+ninja, soft tail, monster = motorcylce
+platform, derby, boat = shoe
+office, high, folding = chair
+gardening, rubber, snow = glove
+rain, smoking, leather = jacket
+ebony, bronze, cream = color
+stud, omaha, draw = poker
+ruble, looney, won = currency
+library, christmas, playing = card
+granny, windsor, bowline = knot
+creole, javanese, zulu = language
+tennis, marriage, supreme = court
+natural, irrational, imaginary = number
+checkout, foul, bottom = line
+funny, dog, steak = bone
+basket, royal, foot = ball
+cook, diary, scrap = book
+beetle, escape, leaf = car
+brown, reed, dawson = kickers
+pad, channel, hair = lock
+garbage, super, post = man
+water, mylar, birthday = balloon
+pay, smart, camera = phone
+ear, pea, whale = pod
+short, hair, bowl = cut
+elbow, shell, orzo = pasta
+oolong, green, sweet = tea
+
+
