@@ -1,0 +1,9 @@
+
+.text-center {
+    text-align: center;
+}
+
+#question {
+    height: 200px;
+    width: 100%;
+}
