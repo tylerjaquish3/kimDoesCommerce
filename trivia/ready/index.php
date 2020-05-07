@@ -37,9 +37,10 @@
 <body>
 
     <div class="row text-center" id="question-row">
-        <div class="col-xs-10">
+
+        <div class="col-xs-8">
             <h1 id="question">
-                Please wait for the round to get started
+                Please wait for the round to start
             </h1>
             <div id="answer">
                 <form>
@@ -51,13 +52,14 @@
             </div>
 
         </div>
-        <div class="col-xs-2">
+        <div class="col-xs-4">
             <div id="timer">
                 <div class="progress vertical">
                     <div class="progress-bar" id="bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:100%"></div>
                 </div>
             </div>
         </div>
+
     </div>
 
     <div class="row text-center" id="game-over-row" style="display: none;">
@@ -68,7 +70,7 @@
 
     <div class="row text-center" id="answers-row" style="display: none;">
         <div class="col-xs-12">
-            <h2 id="response"></h2>
+            <h3 id="response"></h3>
             <table id="current-answers" class="table striped">
                 <thead>
                     <th>User</th>
@@ -135,14 +137,12 @@
         }
     });
 
-
     evtSource.addEventListener("question", function(event) {
         var questionId = JSON.parse(event.data).id;
         var question = JSON.parse(event.data).question;
         var answer = JSON.parse(event.data).answer;
         var sortOrder = JSON.parse(event.data).sort_order;
         var allAnswers = JSON.parse(event.data).allAnswers;
-console.log(sortOrder);
 
         if (gameOver == "false") {
             if (answer) {
@@ -219,27 +219,32 @@ console.log(sortOrder);
 
     $('#submit-answer').click(function (e) {
         e.preventDefault();
-        $.ajax({
-            url: '../handle.php',
-            type: "POST",
-            data: {
-                action: 'answer-submit',
-                user_id: "<?php echo $_GET['id']; ?>",
-                question_id: $('#question_id').val(),
-                answer: $('#answer-input').val()
-            },
-            // async: false,
-            dataType: 'json',
-            complete: function (response) {
 
-                // show max points for correct answer
-                let maxPoints = response.responseJSON.max_points;
-                let message = 'Your answer is being reviewed. <br />Your max points for this round is: '+maxPoints;
+        if ($('#answer-input').val() == '') {
+            alert('You can\'t get any points if your answer is blank!');
+        } else {
+            $.ajax({
+                url: '../handle.php',
+                type: "POST",
+                data: {
+                    action: 'answer-submit',
+                    user_id: "<?php echo $_GET['id']; ?>",
+                    question_id: $('#question_id').val(),
+                    answer: $('#answer-input').val()
+                },
+                // async: false,
+                dataType: 'json',
+                complete: function (response) {
 
-                $('#question').html(message);
-                $('#submit-answer').prop('disabled', true);
-            }
-        });
+                    // show max points for correct answer
+                    let maxPoints = response.responseJSON.max_points;
+                    let message = 'Your answer is being reviewed. <br />Your max points for this round is: '+maxPoints;
+
+                    $('#question').html(message);
+                    $('#submit-answer').prop('disabled', true);
+                }
+            });
+        }
     })
 
 </script>
