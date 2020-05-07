@@ -34,11 +34,20 @@
                     <h1>Welcome!</h1>
                     <h3>What is your name?</h3>
                     <input type="hidden" name="action" value="register">
-                    <input type="text" name="name-input">
+                    <input type="text" name="name-input" required>
                     <br />
                     <button type="submit" class="btn btn-primary">Ready</button>
                 </form>
             </div>
+        </div>
+    </div>
+    <br /><br /><br />
+    <div class="row">
+        <div class="col-xs-12 text-center">
+
+            <h3>How to Play</h3>
+
+
         </div>
     </div>
 

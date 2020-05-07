@@ -1,4 +1,3 @@
-
 .text-center {
     text-align: center;
 }
@@ -6,4 +5,43 @@
 #question {
     height: 200px;
     width: 100%;
+}
+
+#timer {
+    height: 200px;
+}
+
+.vertical {
+    margin-top: 100px;
+    display: inline-block;
+    width: 210px;
+    height: 40px;
+    -webkit-transform: rotate(-90deg); /* Chrome, Safari, Opera */
+    transform: rotate(-90deg);
+    box-shadow: inset 0px 4px 6px #000;
+}
+
+.progress-bar {
+    box-shadow: inset 0px 4px 6px rgba(100, 100, 100, 0.6);
+}
+
+.row {
+    margin-top: 40px;
+}
+#answers {
+    margin-top: 140px;
+    border: 1px solid #000;
+}
+
+#answers th,
+td {
+    padding: 8px;
+}
+
+#answers-row {
+    background-color: cyan;
+}
+
+#standings-row {
+    background-color: beige;
 }
