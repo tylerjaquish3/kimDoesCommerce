@@ -16,7 +16,7 @@ if ($_POST && array_key_exists('action', $_POST) && $_POST['action'] == 'registe
         }
     }
 
-    $name = $_POST['name-input'];
+    $name = mysqli_real_escape_string($conn, $_POST['name-input']);
     $sql = "INSERT INTO users (name, round_id) VALUES ('{$name}', $roundId)";
     $result = mysqli_query($conn, $sql);
 
