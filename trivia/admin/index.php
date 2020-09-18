@@ -41,7 +41,7 @@
             </div>
         </div>
         <div class="row text-center">
-            <div class="col-xs-10">
+            <div class="col-xs-12">
                 <table id="datatable-questions">
                     <thead>
                         <th>#</th>
@@ -70,22 +70,12 @@
                             <?php }
                         } ?>
                     </tbody>
-
                 </table>
-
-            </div>
-            <div class="col-xs-2">
-                Countdown Timer (45s)
-                <div id="timer">
-                    <div class="progress vertical">
-                        <div class="progress-bar" id="bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:100%"></div>
-                    </div>
-                </div>
             </div>
         </div>
 
         <div class="row text-center">
-            <div class="col-xs-12">
+            <div class="col-xs-10">
                 <table id="answers">
                     <thead>
                         <th>User</th>
@@ -95,6 +85,14 @@
                     </thead>
                     <tbody></tbody>
                 </table>
+            </div>
+            <div class="col-xs-2">
+                Countdown Timer (45s)
+                <div id="timer">
+                    <div class="progress vertical">
+                        <div class="progress-bar" id="bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:100%"></div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -179,7 +177,7 @@
                 .append($('<tr>')
                     .append($('<td>').append(item.name))
                     .append($('<td>').append(item.answer))
-                    .append($('<td>').append('<a class="btn btn-success correct" id="'+item.user_id+'">Correct</a><a class="btn btn-danger wrong" id="'+item.user_id+'">Wrong</a>'))
+                    .append($('<td>').append('<a class="btn btn-success correct" id="'+item.user_id+'">Correct</a><a class="btn btn-warning half" id="'+item.user_id+'">Half-Right</a><a class="btn btn-danger wrong" id="'+item.user_id+'">Wrong</a>'))
                 );
 
                 arr.push({ id, user_id: item.user_id, answer: item.answer });
@@ -314,6 +312,27 @@
             type: "POST",
             data: {
                 action: 'wrong',
+                user_id: $(this)[0].id,
+                question_id: questionId
+            },
+            async: false,
+            dataType: 'json',
+            success: function (response) {
+                console.log(response);
+            }
+        });
+
+        $(this).closest('tr').append($('<td>').append('Done'));
+    });
+    
+    $(document).on('click', '.half', function(){
+        let questionId = localStorage.getItem('currentQuestionId');
+
+        $.ajax({
+            url: 'control.php',
+            type: "POST",
+            data: {
+                action: 'half',
                 user_id: $(this)[0].id,
                 question_id: questionId
             },

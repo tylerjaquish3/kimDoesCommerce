@@ -67,6 +67,37 @@ if ($_POST && array_key_exists('action', $_POST) && $_POST['action'] == 'correct
     echo json_encode('Points have been awarded!');
 }
 
+// Answer was half right
+if ($_POST && array_key_exists('action', $_POST) && $_POST['action'] == 'half') {
+
+    $questionId = $_POST['question_id'];
+    $userId = $_POST['user_id'];
+
+    // Look up points
+    $sql = "SELECT answers.user_id, answer, maxsubmit, question_id, max_points FROM answers
+        INNER JOIN ( SELECT user_id, MAX(submitted_at) AS maxsubmit FROM answers GROUP BY user_id
+        ) ms ON answers.user_id = ms.user_id AND submitted_at = maxsubmit
+        WHERE answers.user_id = $userId AND question_id = $questionId";
+    $result = mysqli_query($conn, $sql);
+    if (mysqli_num_rows($result) > 0) {
+        while($row = mysqli_fetch_array($result))
+        {
+            $maxPoints = $row['max_points'];
+        }
+    }
+
+    $maxPoints = round($maxPoints / 2, 0);
+
+    $sql = "INSERT INTO points (user_id, question_id, points) VALUES ($userId, $questionId, $maxPoints)
+        ON DUPLICATE KEY UPDATE points = $maxPoints";
+    $result = mysqli_query($conn, $sql);
+
+    $sql = "UPDATE answers SET correct = 2 where question_id = $questionId and user_id = $userId";
+    $result = mysqli_query($conn, $sql);
+
+    echo json_encode('Points have been awarded!');
+}
+
 // Answer was wrong
 if ($_POST && array_key_exists('action', $_POST) && $_POST['action'] == 'wrong') {
 

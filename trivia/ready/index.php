@@ -39,9 +39,9 @@
     <div class="row text-center" id="question-row">
 
         <div class="col-xs-8">
-            <h1 id="question">
+            <h3 id="question">
                 Please wait for the round to start
-            </h1>
+            </h3>
             <div id="answer">
                 <form>
                     <h3 id="question_num_stuff" style="display:none">Question #<span id="question_num"></span></h3>
@@ -97,8 +97,6 @@
             </table>
         </div>
     </div>
-
-
 </body>
 
 <!-- Main jQuery -->
@@ -165,8 +163,7 @@
             }
 
             currentQuestionId = localStorage.getItem('currentQuestionId');
-
-
+console.log(sortOrder);
             // New question was launced
             if (currentQuestionId != questionId) {
                 $('#question').html(question);

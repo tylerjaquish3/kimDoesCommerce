@@ -50,11 +50,15 @@ if (!$gameOver) {
             if (mysqli_num_rows($result) > 0) {
                 while($ans = mysqli_fetch_array($result))
                 {
+                    $maxPoints = $ans['max_points'];
+                    if ($ans['correct'] == 2) {
+                        $maxPoints = round($ans['max_points'] / 2, 0);
+                    }
                     $ansArray[] = [
                         'name' => $ans['name'],
                         'answer' => $ans['answer'],
                         'correct' => $ans['correct'],
-                        'points' => $ans['max_points']
+                        'points' => $maxPoints
                     ];
                 }
             }
